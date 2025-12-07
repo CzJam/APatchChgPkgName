@@ -2,8 +2,9 @@ name: Build Manager
 
 on:
   push:
-    tags: [ "*" ]
+    tags: [ "1" ]
     branches: [ "main" ]
+
     paths:
       - '.github/workflows/build.yml'
       - 'app/**'
@@ -20,6 +21,12 @@ on:
       - 'gradle/libs.versions.toml'
   workflow_call:
   workflow_dispatch:
+    inputs:
+          package_name:
+            description: 'com.jamcz.apatch'
+            required: true
+            default: 'apatch-custom'
+            type: string
 
 jobs:
   build-manager:
